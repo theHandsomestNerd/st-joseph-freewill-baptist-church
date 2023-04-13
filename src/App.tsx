@@ -47,7 +47,6 @@ function App() {
                                                       overflow: "hidden",
                                                       width: "100vw"
                                                   }}>
-
                                                 <Grid item>
                                                     <Routes>
                                                         <Route path={RoutesEnum.THN} element={<PageMux/>}/>
