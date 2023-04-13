@@ -8,6 +8,7 @@ import {useQuery} from "react-query";
 import leadClient from "./under-construction-page/leadClient";
 import DigitalResumeTheme from "../../../theme/DigitalResumeTheme";
 import useCustomStyles from "../../mackenzies-mind/pages/Styles";
+import FirebaseAnalyticsClient from "../../../utils/firebase/FirebaseAnalyticsClient";
 
 export const useStyles = makeStyles((theme: Theme) => ({
     root: {},
@@ -35,6 +36,7 @@ const SubmitEmail: FunctionComponent<IProps> = (props: IProps) => {
     );
 
     const createLead = async (e: any): Promise<any> => {
+        FirebaseAnalyticsClient.ctaClick('coming-soon-page', 'Submit Email')
         return refetch()
     }
 
@@ -50,7 +52,7 @@ const SubmitEmail: FunctionComponent<IProps> = (props: IProps) => {
         }
         if (isError) {
             return <Typography style={{color: theme.palette.error.main}} variant='subtitle1'>Please Try your
-                submission again later or contact jgreene@transformHW.org.</Typography>
+                submission again later or contact hello@thehandsomestnerd.com.</Typography>
         }
 
         return <Typography variant='subtitle1'>&nbsp;</Typography>

@@ -8,9 +8,9 @@ import CssFadeToColor from "../../../css-fade-to-color/CssFadeToColor";
 import {SanityRef, SanityUnderConstructionPageType} from "../../../../common/sanityIo/Types";
 import cmsClient from "../../../block-content-ui/cmsClient";
 import SubmitEmail from "../SubmitEmail";
-import Logo from "../../logo/Logo";
 import {urlFor} from "../../../block-content-ui/static-pages/cmsStaticPagesClient";
 import MailTo from "../../../mail-to/MailTo";
+import FirebaseAnalyticsClient from "../../../../utils/firebase/FirebaseAnalyticsClient";
 
 interface IProps {
     email?: string
@@ -86,6 +86,11 @@ const UnderConstruction: FunctionComponent<IProps> = (props) => {
                                          emailButtonText={cmsPageData?.emailButtonText ?? ""}
                                          subscribeText={cmsPageData?.subscribeText ?? ""}/>
                         </Grid>
+                        <Grid container item justifyContent='center'>
+                            <Grid item style={{paddingBottom: theme.spacing(2)}} > <Link  onClick={()=>{
+                                FirebaseAnalyticsClient.ctaClick('coming-soon-page','Givelify Donation')
+                            }} target="_blank" href="https://givelify.com/givenow/1.0/MzI3MzU=/selection" rel="noreferrer"><img width={300} src="https://images.givelify.com/PrimaryGiveButton2x.png" alt="Givelify" /></Link>
+                            </Grid></Grid>
                         <Grid item container style={{
                             // backgroundColor: xsDown ? theme.palette.background.default : "transparent",
                             // position: 'static',
