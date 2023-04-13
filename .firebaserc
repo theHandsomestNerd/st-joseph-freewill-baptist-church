@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "the-handsomest-nerd-internal"
+    "default": "st-joseph-fwbc"
+  },
+  "hosting": {
+    "site": "st-joseph-fwbc",
+    "public": "build"
   }
 }

@@ -105,7 +105,7 @@ const DigitalResumeTheme = createTheme({
             paper: "#43424A"
         },
         primary: {
-            main: "#d20027",
+            main: "#2f2f2f",
         },
         secondary: {
             main: "#e6e6e6",

@@ -1,11 +1,10 @@
-# Mixed Feelings By T
+# St Joseph Freewill Baptist Church
 
-Application that serves as the website for Mixed Feelings By T
+Application that serves as the website for St Joseph Freewill Baptist Church
 
 ## Description
 
-Client project for Mixed Feelings by T. Serves as central location for music, media, and other content. 
-Links for purchase of music and place for performance updates. 
+Client project for St Joseph Freewill Baptist Church. Serves as central location for music, media, and other content. 
 
 ## Getting Started
 

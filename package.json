@@ -1,6 +1,6 @@
 {
-  "name": "the-handsomestnerd-internal",
-  "version": "0.0.0",
+  "name": "st-joseph-freewill-baptist-church",
+  "version": "0.0.0.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.4",
@@ -24,6 +24,7 @@
     "caniuse-lite": "^1.0.30001414",
     "clsx": "^1.2.1",
     "firebase": "^9.14.0",
+    "firebase-tools": "^3.16.0",
     "framer-motion": "^4.1.17",
     "ga-gtag": "^1.1.5",
     "material-ui-popup-state": "^4.1.0",

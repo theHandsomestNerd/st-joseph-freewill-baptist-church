@@ -63,7 +63,7 @@ const SubmitEmail: FunctionComponent<IProps> = (props: IProps) => {
                         align='center'
                         style={{marginBottom: theme.spacing(2)}}>{props.subscribeText}</Typography>
         </Grid>
-        <Grid item container xs={12}>
+        <Grid item container>
             <TextField fullWidth
                        label={props.emailFieldText}
                        variant='filled'
@@ -76,7 +76,7 @@ const SubmitEmail: FunctionComponent<IProps> = (props: IProps) => {
                        InputProps={{
                            endAdornment:
                                <LoadingButton
-                                   width={150}
+                                   width={130}
                                    isLoading={isLoading}
                                    groupiness={ButtonGroupMemberEnum.RIGHT}
                                    disabled={!!(data || isError || (email && (email.length > 0) && !isEmail(email)))}

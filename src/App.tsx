@@ -14,7 +14,7 @@ import PageMux from "./components/mackenzies-mind/pages/PageMux";
 import QrCodeProvider from "./components/qr-code-context/QrCodeProvider";
 
 export enum RoutesEnum {
-    THN = "/the-handsomest-nerd-internal/:pageSlug",
+    THN = "/:pageSlug",
     ERROR = '/error'
 }
 
@@ -54,7 +54,7 @@ function App() {
                                                         <Route path={RoutesEnum.ERROR} element={<FourOhFour/>}/>
                                                         <Route path={"/*"}
                                                                element={<Navigate
-                                                                   to={'/the-handsomest-nerd-internal/home'}/>}/>
+                                                                   to={'/home'}/>}/>
                                                     </Routes>
                                                 </Grid>
                                             </Grid>

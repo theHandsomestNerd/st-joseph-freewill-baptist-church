@@ -16,7 +16,7 @@ const useCustomStyles = makeStyles({
     transparentBacking: {
         borderLeft: `4px solid ${DigitalResumeTheme.palette.primary.main}`,
         borderRight: `4px solid ${DigitalResumeTheme.palette.primary.main}`,
-        padding: DigitalResumeTheme.spacing(2,0),
+        padding: DigitalResumeTheme.spacing(2,2),
         backgroundColor:COLORS.TRANSPARENTWHITE
     },
     endAdornedInput: {
@@ -58,7 +58,7 @@ const useCustomStyles = makeStyles({
         position: "relative",
         backgroundImage: (props: any) => `url(${props.bgImage})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'right',
+        backgroundPosition: 'center',
         backgroundColor: DigitalResumeTheme.palette.background.default
     },
     fullSection: {
