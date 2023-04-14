@@ -10,7 +10,9 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checking out code 
+        uses: actions/checkout@v2
+      - name: Setting up CI Env variables  
         run: |
           set -e
           # Put your environment variables here. Don't forget
@@ -20,8 +22,10 @@ jobs:
           REACT_APP_SANITY_PROJECTID="${{ secrets.REACT_APP_SANITY_PROJECTID }}"
           REACT_APP_SANITY_DB="${{ secrets.REACT_APP_SANITY_DB }}"
           EOF
-      - run: unset CI && npm ci && npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Building production code 
+        run: unset CI && npm ci && npm run build
+      - name: Deploying to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ST_JOSEPH_FWBC }}'
