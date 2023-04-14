@@ -8,7 +8,7 @@ name: Deploy to Firebase Hosting on merge
       - master 
 env: 
     REACT_APP_SANITY_PROJECTID:'${{ secrets.REACT_APP_SANITY_PROJECTID }}'
-    REACT_APP_SANITY_DB:'{{ secrets.REACT_APP_SANITY_DB }}'
+    REACT_APP_SANITY_DB:'${{ secrets.REACT_APP_SANITY_DB }}'
 
 jobs:
   build_and_deploy:
