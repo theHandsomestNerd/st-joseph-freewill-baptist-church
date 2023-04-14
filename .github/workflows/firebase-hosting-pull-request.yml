@@ -20,7 +20,7 @@ jobs:
           REACT_APP_SANITY_DB="${{ secrets.REACT_APP_SANITY_DB }}"
           EOF
       - name: Building code
-      - run: unset CI && npm ci && npm run build
+        run: unset CI && npm ci && npm run build
       - name: Deploying to hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
