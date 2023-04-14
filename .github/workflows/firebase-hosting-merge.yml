@@ -15,8 +15,14 @@ jobs:
         uses: actions/checkout@v2
       - name: Setting up CI Env variables
         run: |
-          echo "REACT_APP_SANITY_PROJECTID=${{ secrets.REACT_APP_SANITY_PROJECTID }}" >> $GITHUB_ENV
-          echo "REACT_APP_SANITY_DB=${{ secrets.REACT_APP_SANITY_DB }}" >> $GITHUB_ENV
+          set -e
+          # Put your environment variables here. Don't forget
+          # to create secrets for them on GitHub:
+          # https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
+          cat << EOF > .env
+          REACT_APP_SANITY_PROJECTID="${{ secrets.REACT_APP_SANITY_PROJECTID }}"
+          REACT_APP_SANITY_DB="${{ secrets.REACT_APP_SANITY_DB }}"
+          EOF
       - name: Building production code 
         run: unset CI && npm ci && npm run build
       
