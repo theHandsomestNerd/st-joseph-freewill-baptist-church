@@ -74,6 +74,18 @@ export type ThwHeroContentSectionType = {
     ctaButtonTitle: string
     ctaButtonLink: string
 }
+export type SjfHeroContentSectionType = {
+    name: string
+    title: string
+    heroImage: SanityImageAsset
+    heroImageAltText: string
+    heroImageBackground?: SanityImageAsset
+    contentWelcomeMessage: string
+    contentTitle: string
+    contentText: string
+    ctaButtonTitle: string
+    ctaButtonLink: string
+}
 
 
 export type ServiceAmenityTypeRef = SanityRef
@@ -443,7 +455,104 @@ export type DevelopmentFooterSectionType = {
     name:string
     footerMenuRef: SanityMenuContainer
 }
+
+
+export type HeadlineCTASectionType = {
+    name: string
+    contentText: string
+    ctaButtonText: string
+    ctaButtonLink: string,
+    slug: SanitySlug
+}
+export type ThreeColumnImagesSectionType = {
+    name: string
+    slug: SanitySlug
+    title: string
+    images: SanityImageAsset[],
+}
+export type EventItemType = {
+    name: string
+    imageSrc: SanityImageAsset
+    imageSrcAltText: string
+    contentTitle: string
+    contentText: string
+    ctaButtonText: string
+    ctaButtonLink: string
+    eventLocation: string
+    eventTimes: EventDateTime[],
+    slug: SanitySlug
+}
+
+export type EventDateTime =  {eventDay: string, eventTime: string, eventLocation: string}
 export type FooterSectionType = {
     name:string
     footerMenuRef: SanityMenuContainer
+}
+
+export  type EventsSectionType = {
+    name: string
+    contentTitle: string
+    contentPreTitle: string
+    contentText: string
+    contentTexts: string[]
+    eventsList: EventItemType[]
+}
+export type TeamMember =  {
+    image: SanityImageAsset,
+    title: string,
+    firstName: string,
+    lastName: string,
+    homeCity:string,
+    homeState:string,
+    hobby:string,
+    faveDrinkToMake:string,
+}
+export type TeamSectionType = {
+
+    name: string
+    contentPretitle: string
+    contentTitle: string
+    contentTexts: string[],
+    leadershipTeamList: TeamMember[],
+    ministersList: TeamMember[],
+}
+
+export type SjfServicesSectionType = {
+    name: string
+    contentTitle: string
+    contentPreTitle: string
+    contentText: string
+    contentTexts: string[]
+    servicesList: SjfServiceItemNoRefType[]
+}
+export type SjfSocialMediaConnectSectionType = GenericSectionType & {
+    instagramFeedImages: SanityImageAsset[]
+}
+
+export type GenericSectionType = {
+    name: string
+    contentTitle: string
+    contentPreTitle: string
+    contentText: string
+    contentTexts: string[]
+}
+
+export type SjfServiceItemNoRefType = {
+    name: string
+    imageSrc: SanityImageAsset
+    imageSrcAltText: string
+    contentTitle: string
+    contentText: string
+    ctaButtonText: string
+    ctaButtonLink: string
+    learnMoreLink: string
+    learnMoreText: string
+    // educationPageTitle: string
+    // educationPageSlimHeroImage: SanityImageAsset
+    // extendedDescriptions: string[]
+    benefitsOfServiceTitle: string
+    benefitsOfServiceContents: string[]
+    benefitsOfServiceBullets: string[]
+    serviceAmenities: ServiceAmenityType[]
+    slug: SanitySlug
 }

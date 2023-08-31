@@ -71,6 +71,15 @@ import DevelopmentHeaderSection from "./sections/DevelopmentHeaderSection";
 import FooterSection from "./web-dev/FooterSection";
 import DevelopmentFooterSection from "./web-dev/DevelopmentFooterSection";
 import footerContentContainer from "./footerContentContainer";
+import SjfHeroContentSection from "./sjf/SjfHeroContentSection";
+import HeadlineCTA from "./HeadlineCTA";
+import ThreeColumnImagesSection from "./ThreeColumnImagesSection";
+import EventItem from "./sjf/events/EventItem";
+import EventsSection from "./sjf/events/EventsSection";
+import EventDateTime from "./sjf/events/EventDateTime";
+import TeamSection from "./sjf/team/TeamSection";
+import TeamMember from "./sjf/team/TeamMember";
+import ConnectWithUsSection from "./ConnectWithUsSection";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -152,6 +161,15 @@ export default createSchema({
         headerContentContainer,
         FooterSection,
         DevelopmentFooterSection,
-        footerContentContainer
+        footerContentContainer,
+        SjfHeroContentSection,
+        HeadlineCTA,
+        ThreeColumnImagesSection,
+        EventItem,
+        EventsSection,
+        EventDateTime,
+        TeamSection,
+        TeamMember,
+        ConnectWithUsSection
     ]),
 })

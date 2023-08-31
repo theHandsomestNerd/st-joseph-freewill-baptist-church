@@ -4,6 +4,8 @@ import {Card, Grid, Link} from '@material-ui/core'
 import sanityClient from '../sanityClient'
 import {blockSerializers} from '../common/sanityIo/BlockContentRenderer'
 import {
+    EventsSectionType,
+    HeadlineCTASectionType,
     HowItWorksSectionType,
     PortfolioSectionType,
     ResumeBioSectionType,
@@ -12,7 +14,9 @@ import {
     ResumeExperienceSectionType,
     ResumeFeedbackSectionType,
     ResumePortfolioSectionType,
-    ResumeSkillSectionType,
+    ResumeSkillSectionType, SjfServicesSectionType, SjfSocialMediaConnectSectionType,
+    TeamSectionType,
+    ThreeColumnImagesSectionType,
     ThwAboutProprietorSectionType,
     ThwContactUsSectionType,
     ThwHeroContentSectionType,
@@ -51,10 +55,19 @@ import WebDevServicesSection from "./web-dev-site/WebDevServicesSection";
 import WebDevPortfolioSection from "./web-dev-site/WebDevPortfolioSection";
 import WebDevTestimonialsSection from "./web-dev-site/WebDevTestimonialsSection";
 import WebDevHowItWorksSection from "./web-dev-site/WebDevHowItWorksSection";
+import SjfHeroContentSection from "./st-joseph-freewill/SjfHeroContentSection";
+import HeadlineCTASection from "./headline-cta-section/HeadlineCTASection";
+import ThreeColumnImagesSection from "./three-column-image-section/ThreeColumnImagesSection";
+import EventsSection from "./events-section/EventsSection";
+import TeamSection from "./team-section/TeamSection";
+import SjfServicesSection from "./st-joseph-freewill/SjfServicesSection";
+import SjfContactUs from "./st-joseph-freewill/SjfContactUsSection";
+import SjfSocialMediaDisplaySection from "./st-joseph-freewill/SjfSocialMediaDisplaySection";
+import {SanityTransformHwHomePage} from "../common/sanityIo/Types";
 
 export type BlockContentLayoutContainerProps = {
     content?: any,
-    homePage: SanityHomePage
+    homePage: SanityTransformHwHomePage
 }
 
 const BlockContentLayoutContainer: FunctionComponent<BlockContentLayoutContainerProps> = (props) => {
@@ -182,8 +195,21 @@ const BlockContentLayoutContainer: FunctionComponent<BlockContentLayoutContainer
 
                     return <Grid key={'transformContactUsSection'} container item xs={12} justifyContent='center'
                                  style={{backgroundColor: DigitalResumeTheme.palette.background.paper}}>
-                        <ThwContactUsSection
+                        <SjfContactUs
                             sectionData={thwCUSection}
+                        />
+                    </Grid>
+                case 'ConnectWithUsSection':
+                    const sjfSocialMediaConnectSection: SjfSocialMediaConnectSectionType = columnLayoutContainer
+
+                    return <Grid key={'ConnectWithUsSection'} container item xs={12} justifyContent='center'
+                                 style={{backgroundColor: DigitalResumeTheme.palette.background.paper}}>
+                        <SjfSocialMediaDisplaySection
+                            instagram={props.homePage.instagram}
+                            twitter={props.homePage.twitter}
+                            // youtube={props.homePage.youtube}
+                            facebook={props.homePage.facebook}
+                            sectionData={sjfSocialMediaConnectSection}
                         />
                     </Grid>
                 case 'ResumeBioSection':
@@ -285,12 +311,12 @@ const BlockContentLayoutContainer: FunctionComponent<BlockContentLayoutContainer
                         />
                     </Grid>
                 case 'ServicesSection':
-                    const webDevServicesSection: PortfolioSectionType = columnLayoutContainer
+                    const webDevServicesSection: SjfServicesSectionType = columnLayoutContainer
 
                     return <Grid key={'webDevServicesSection'} container item xs={12}>
                         <Link id={"SERVICES"}><></></Link>
 
-                        <WebDevServicesSection
+                        <SjfServicesSection
                             sectionData={webDevServicesSection}
                         />
                     </Grid>
@@ -321,6 +347,57 @@ const BlockContentLayoutContainer: FunctionComponent<BlockContentLayoutContainer
                         <Link id={"HOW_IT_WORKS"}><></></Link>
                         <WebDevHowItWorksSection
                             sectionData={webDevHowItWorksSection}
+                        />
+                    </Grid>
+                case 'SjfHeroContentSection':
+                    const sjfHeroSection: ThwHeroContentSectionType = columnLayoutContainer
+
+                    return <Grid key={'sjfHeroContentSection'} container item xs={12}>
+                        <Link id={"TOP_OF_PAGE"}><></>
+                        </Link>
+                        <SjfHeroContentSection
+                            sectionData={sjfHeroSection}
+                        />
+                    </Grid>
+                case 'HeadlineCTASection':
+                    const HeadlineSection: HeadlineCTASectionType = columnLayoutContainer
+
+                    return <Grid key={HeadlineSection.slug.current+'HeadlineSection'} container item xs={12} justifyContent='center'
+                                 style={{backgroundColor: "black"}}>
+                        <HeadlineCTASection
+                            sectionData={HeadlineSection}
+                        />
+                    </Grid>
+                case 'ThreeColumnImageSection':
+                    const threeColumnImagesSection: ThreeColumnImagesSectionType = columnLayoutContainer
+
+                    return <Grid key={threeColumnImagesSection.slug.current+'-3ColumnImage'} container item xs={12} justifyContent='center'
+                                 style={{backgroundColor: "white"}}>
+                        <Link id={"SPECIAL_EVENTS"} style={{top: -100, position: "relative"}}></Link>
+                        <ThreeColumnImagesSection
+                            sectionData={threeColumnImagesSection}
+                        />
+                    </Grid>
+                case 'EventsSection':
+                    const eventsSection: EventsSectionType = columnLayoutContainer
+
+                    return <Grid key={'events-section'} container item xs={12} justifyContent='center'
+                                 style={{backgroundColor: "white"}}>
+                        <Link id={"WEEKLY_EVENTS"} style={{top: -100, position: "relative"}}></Link>
+
+                            <EventsSection
+                            sectionData={eventsSection}
+                        />
+                    </Grid>
+                case 'TeamSection':
+                    const teamSection: TeamSectionType = columnLayoutContainer
+
+                    return <Grid key={'team-section'} container item xs={12} justifyContent='center'
+                                 style={{backgroundColor: "white"}}>
+                        <Link id={"OUR_TEAM"} style={{top: -100, position: "relative"}}></Link>
+
+                        <TeamSection
+                            sectionData={teamSection}
                         />
                     </Grid>
                 default:

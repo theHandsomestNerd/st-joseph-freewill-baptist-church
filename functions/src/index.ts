@@ -8,12 +8,24 @@ import * as cmsClient from "./cmsClient";
 import * as Promise from "es6-promise";
 import * as path from "path";
 import * as fs from "fs";
-import {SanityColdLead, SanityTransformHwHomePage}
-  from "../../src/common/sanityIo/Types";
-import {urlFor} from
-  "../../src/components/block-content-ui/static-pages/cmsStaticPagesClient";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// import helmet from "helmet";
+
+// import {urlFor} from
+//   "../../src/components/block-content-ui/static-pages/cmsStaticPagesClient";
 import sendGridClient from "./sendGridClient";
+import imageUrlBuilder from "@sanity/image-url";
+import {SanityImageSource} from "@sanity/image-url/lib/types/types";
+import {sanityClient} from "./sanityClient";
+import axios from "axios";
+
+const builder = imageUrlBuilder(sanityClient);
 // To Throttle requests to sanity
+
+export const urlFor = (source: SanityImageSource) => {
+  return builder.image(source);
+};
 
 Promise.polyfill();
 
@@ -35,6 +47,17 @@ const corsOptionsDelegate = (req: any, callback: any) => {
 app.use(cors(corsOptionsDelegate));
 // app.use(cors());
 
+// app.use(
+//     helmet({
+//       crossOriginResourcePolicy: false,
+//       contentSecurityPolicy: {
+//         directives: {
+//           defaultSrc: ["'self'"],
+//           connectSrc: ["'self'", "http://127.0.0.1:5002", "ws://localhost:3000/", "https://firebase.googleapis.com/"],
+//         },
+//       },
+//     })
+// );
 admin.initializeApp({
   // credential: admin.credential.cert(serviceAccount),
 });
@@ -107,7 +130,7 @@ const serveIndexFile = (req: any, res: any) => {
     logClient.log("server-side", "NOTICE",
         "Loading this page from sanity", pageSlug);
     try {
-      const pageFromSanity: SanityTransformHwHomePage = await cmsClient.fetchPage(pageSlug);
+      const pageFromSanity: any = await cmsClient.fetchPage(pageSlug);
 
       // console.log("IMAGE URL", pageFromSanity.metaImage && urlFor(pageFromSanity.metaImage).url()?.replace("undefined", process.env.SANITY_DB ?? "development"));
       const page = {
@@ -137,12 +160,13 @@ const serveIndexFile = (req: any, res: any) => {
   });
 };
 
-
 app.post("/send-email-resume",
     async (req: any, functionRes: any) => {
-      const reqBody: SanityColdLead = JSON.parse(req.body);
+      functions.logger.log("send-email-address", "NOTICE",
+          "send-email-address-request");
+      const reqBody: any = JSON.parse(req.body);
 
-      logClient.log("send-email-address", "NOTICE",
+      functions.logger.log("send-email-address", "NOTICE",
           "Request to collect an email address and send them an email", reqBody.email);
 
       try {
@@ -174,7 +198,7 @@ app.post("/send-email-resume",
 
 app.post("/collect-email-address",
     async (req: any, functionRes: any) => {
-      const reqBody: SanityColdLead = JSON.parse(req.body);
+      const reqBody: any = JSON.parse(req.body);
 
       logClient.log("collect-email-address", "NOTICE",
           "Request to collect an email address", reqBody.email);
@@ -195,6 +219,26 @@ app.post("/collect-email-address",
       }
     });
 
+app.post("/get-insta-image", async (req: any, functionRes: any) => {
+  const reqParams: any = JSON.parse(req.body);
+  console.log("get-insta-image request body", reqParams.url);
+
+
+  // return req.pipe(request(reqParams.url)).pipe(functionRes);
+
+  return axios.get(reqParams.url, {
+    responseType: "arraybuffer",
+  })
+      .then(function(response) {
+        // handle success
+        // if (response.data) {
+        return functionRes.send({
+          imageData: Buffer.from(response.data, "binary").toString("base64"),
+          imageUrl: response.request.res.responseUrl,
+        });
+        // }
+      });
+});
 
 app.use(express.static(
     path.resolve(__dirname, "../../../../", "build"),

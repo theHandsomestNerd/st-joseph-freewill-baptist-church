@@ -26,7 +26,7 @@ const MENUGROUP = `
           url,
           isOutlinedButton,
           isContainedButton,
-`
+`;
 
 const MENUGROUPCONTAINER = `
           title,
@@ -37,7 +37,7 @@ const MENUGROUPCONTAINER = `
           },
           logoImageSrc,
           logoImageAltText
-`
+`;
 
 const SERVICE =
     `name,
@@ -56,7 +56,7 @@ const SERVICE =
         benefitsOfServiceContents,
         benefitsOfServiceBullets,
         "serviceAmenities": serviceAmenities[]->,
-        slug,`
+        slug,`;
 
 
 const HOMEPAGE = `_type,
@@ -157,7 +157,7 @@ const HOMEPAGE = `_type,
               altText
              }
           }
-`
+`;
 // const MENUGROUP = `
 //           title,
 //           slug,
@@ -167,12 +167,11 @@ const HOMEPAGE = `_type,
 // `
 
 
-
 enum SANITY_TYPES_ENUM {
     SERVICE="transformServiceItem"
 }
 
-const defaultObj = {HOMEPAGE, MENUGROUPCONTAINER, MENUGROUP, SERVICE, SANITY_TYPES_ENUM}
+const defaultObj = {HOMEPAGE, MENUGROUPCONTAINER, MENUGROUP, SERVICE, SANITY_TYPES_ENUM};
 
 
-export default defaultObj
+export default defaultObj;

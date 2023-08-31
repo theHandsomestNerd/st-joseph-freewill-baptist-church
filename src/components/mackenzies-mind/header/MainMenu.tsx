@@ -7,6 +7,7 @@ import MainMenuSubMenu from "./MainMenuSubMenu";
 import {MainMenuAnchorType, SanityMenuContainer, SanityMenuGroup, SanityMenuItem} from "../../../common/sanityIo/Types";
 import ModalContext from "../../snackbar-context/ModalContext";
 import Logo from "../../transform-hw/logo/Logo";
+import digitalResumeTheme from "../../../theme/DigitalResumeTheme";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -68,7 +69,8 @@ const MainMenu: FunctionComponent<MainMenuProps> = ({menu, anchor}) => {
                                     paddingLeft: DigitalResumeTheme.spacing(2),
                                     paddingBottom: DigitalResumeTheme.spacing(2.25),
                                     height: "100%",
-                                    margin: 0
+                                    margin: 0,
+
                                 }} fullWidth>
                                     <ListItemText secondary={menuItem.displayText}/>
                                 </Button>
@@ -84,7 +86,7 @@ const MainMenu: FunctionComponent<MainMenuProps> = ({menu, anchor}) => {
 
     return (<Grid item>
             <Button onClick={toggleDrawer(anchor, true)}>
-                <Menu color='inherit'
+                <Menu style={{color: digitalResumeTheme.palette.text.secondary}}
                       fontSize='large'/>
             </Button>
             <Drawer anchor={anchor} open={isDrawerOpen}

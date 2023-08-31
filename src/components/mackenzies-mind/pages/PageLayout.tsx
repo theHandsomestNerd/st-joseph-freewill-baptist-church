@@ -69,11 +69,10 @@ const PageLayout: FunctionComponent<IProps> = (props: IProps) => {
             // xs={11}
         >
             <Link
-                gutterBottom
                 href='https://thehandsomestnerd.com'
-                color='textPrimary'
+                color='secondary'
                 variant='subtitle2'>
-                © Copyright 2022
+                © Copyright 2023
                 TheHandsomestNerd, LLC. All Rights Reserved.
             </Link>
         </Grid>

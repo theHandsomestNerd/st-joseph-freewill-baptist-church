@@ -85,7 +85,9 @@ export enum COLORS {
     MEDIUMGRAY = "#BCB9B0",
     DARKGRAY = "#43424A",
     TRANSPARENTDARKGRAY = "rgba(67,66,74,0.78)",
-    AQUA="#12b3be"
+    AQUA="#12b3be",
+    COLOR_ACCENT="#314E52",
+    COLOR1="#52514F",
 }
 
 const DigitalResumeTheme = createTheme({
@@ -105,10 +107,11 @@ const DigitalResumeTheme = createTheme({
             paper: "#43424A"
         },
         primary: {
-            main: "#2f2f2f",
+            main: "#c6b597",
         },
         secondary: {
-            main: "#e6e6e6",
+            main: "#12242c",
+            // main: "#2c2e31",
         },
         error: {
             main: '#840E0E',
@@ -126,14 +129,14 @@ const DigitalResumeTheme = createTheme({
             dark: '#CF800A'
         },
         text: {
-            primary: "#404040",
-            secondary: "#FFFFFF",
+            primary: "#ffffff",
+            secondary: "#1c1c1c",
             disabled: COLORS.LIGHT_GRAY
         }
     },
     mixins: {
       toolbar: {
-          height: "55px"
+          // height: "55px"
       }
     },
     typography: {
@@ -231,6 +234,9 @@ const DigitalResumeTheme = createTheme({
         MuiInputBase: {
             root: {
                 borderRadius: 0,
+                // "& fieldset":{
+                //         backgroundColor: "#292929",
+                // },
                 // color: "#FAFAFA",
                 "&:focus": {
                     borderBottom: 0
@@ -255,9 +261,11 @@ const DigitalResumeTheme = createTheme({
                 backgroundColor: 'rgba(210,0,39,0.9) !important'
             }
         },
+
         MuiOutlinedInput: {
             root:{
                 // borderRadius: 0
+                //     backgroundColor: "#292929",
             }
         },
         MuiFormLabel:{

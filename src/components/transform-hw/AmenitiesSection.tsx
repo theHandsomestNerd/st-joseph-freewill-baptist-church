@@ -3,7 +3,7 @@ import {makeStyles, Theme} from "@material-ui/core/styles"
 import {Grid, List} from '@material-ui/core'
 import {ArrowLeft, ArrowRight} from "@material-ui/icons";
 import DigitalResumeTheme from "../../theme/DigitalResumeTheme";
-import {ThwServiceItemNoRefType} from "../BlockContentTypes";
+import {SjfServiceItemNoRefType} from "../BlockContentTypes";
 import PageContext from "../page-context/PageContext";
 import AmenityContext from "../amenity-context/AmenityContext";
 import {useIsHorizontalOverflow} from "../../utils/useIsHorizontalOverflow";
@@ -13,7 +13,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 interface IProps {
-    service: ThwServiceItemNoRefType
+    service: SjfServiceItemNoRefType
     placeHolder?: JSX.Element
 }
 
@@ -28,7 +28,7 @@ const AmenitiesSection: FunctionComponent<IProps> = (props: IProps) => {
     const [elements, setElements] = React.useState<JSX.Element>()
 
     React.useEffect(() => {
-        if (amenityContext.serviceId !== props.service.slug.current) {
+        if (amenityContext.serviceId !== props.service.slug?.current) {
             setShowAmenity(false)
         } else {
             setShowAmenity(true)
@@ -37,7 +37,7 @@ const AmenitiesSection: FunctionComponent<IProps> = (props: IProps) => {
     }, [amenityContext.serviceId])
 
     React.useEffect(() => {
-        if (amenityContext.serviceId !== props.service.slug.current) {
+        if (amenityContext.serviceId !== props.service.slug?.current) {
             setLoading(false)
         } else {
             setLoading(true)
@@ -45,13 +45,13 @@ const AmenitiesSection: FunctionComponent<IProps> = (props: IProps) => {
         }
     }, [amenityContext.serviceId])
 
-    React.useEffect(() => {
-        const newElements = amenityContext.getElements && amenityContext.getElements(props.service.slug.current)
-        if (newElements) {
-            console.log("setting the new elements in the component", props.service.slug.current)
-            setElements(newElements)
-        }
-    }, [amenityContext.getElements && amenityContext.getElements(props.service.slug.current)])
+    // React.useEffect(() => {
+    //     const newElements = amenityContext.getElements && amenityContext.getElements(props.service.slug?.current)
+    //     if (newElements) {
+    //         console.log("setting the new elements in the component", props.service.slug?.current)
+    //         setElements(newElements)
+    //     }
+    // }, [amenityContext.getElements && amenityContext.getElements(props.service.slug?.current)])
 
 
     // React.useEffect(() => {

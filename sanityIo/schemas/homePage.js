@@ -87,7 +87,7 @@ export default {
             name: 'servicesAvailable',
             title: 'Other Services',
             type: "array",
-            of: [{type: "reference", to:[{type: "transformServiceItem"}]},
+            of: [{type: "reference", to:[{type: "ServiceItem"}]},
             ]
         },
         {

@@ -67,6 +67,7 @@ const SubmitEmail: FunctionComponent<IProps> = (props: IProps) => {
         </Grid>
         <Grid item container>
             <TextField fullWidth
+
                        label={props.emailFieldText}
                        variant='filled'
                        type='email'
@@ -77,16 +78,15 @@ const SubmitEmail: FunctionComponent<IProps> = (props: IProps) => {
                        className={classes.endAdornedInput}
                        InputProps={{
                            endAdornment:
-                               <LoadingButton
+                               <div style={{height:"100%", right: "14px", position:"relative"}}><LoadingButton
                                    width={130}
                                    isLoading={isLoading}
                                    groupiness={ButtonGroupMemberEnum.RIGHT}
                                    disabled={!!(data || isError || (email && (email.length > 0) && !isEmail(email)))}
                                    clickHandler={createLead}
                                    color='primary'
-                                   variant='contained'>{props.emailButtonText}</LoadingButton>
-                           ,
-                       }}/>
+                                   variant='contained'>{props.emailButtonText}</LoadingButton></div>
+                                   }}/>
         </Grid>
         <Grid item container justifyContent='center' className={classes.spacer}>
             {getHelperText()}

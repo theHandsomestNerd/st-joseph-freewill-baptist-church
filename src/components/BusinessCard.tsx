@@ -26,6 +26,7 @@ import SnackbarContext from "./modal-context/SnackbarContext";
 import BusinessCardSubmitEmail from "./transform-hw/pages/BusinessCardSubmitEmail";
 import firebaseAnalyticsClient from "../utils/firebase/FirebaseAnalyticsClient";
 import {useLocation} from "react-router";
+import SjfContactUs from "./st-joseph-freewill/SjfContactUsSection";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -171,111 +172,8 @@ const BusinessCard: FunctionComponent<MainMenuProps> = ({menu, anchor}) => {
                             {/*<Typography variant='body2'>{pageContext.page?.email}</Typography>*/}
                         </Grid>
                     </ListItem>
-                    <Divider/>
-                    <ListItem>
-                        <Grid container>
-                            <Grid item xs={8} container alignContent='flex-end'>
-                                <Typography variant='h6' gutterBottom>Website</Typography>
-                                <Button variant='outlined' size='small' fullWidth color='primary'
-                                        href={pageContext.page?.website}><Grid style={{height: "48px"}} container
-                                                                               justifyContent='center'
-                                                                               alignContent='center'
-                                                                               alignItems='center'><Grid
-                                    item><Typography
-
-                                    variant='subtitle1'
-                                    align='center'>{pageContext.page?.website}</Typography></Grid></Grid></Button>
-                            </Grid>
-                            <Grid item xs={3} container>
-                                <Grid container item justifyContent='flex-end'>
-
-                                    <Grid item xs={2} container justifyContent='flex-end'>
-                                        <Button variant='contained' color='primary' fullWidth onClick={() => {
-                                            navigator.clipboard.writeText(pageContext.page?.website ?? "")
-                                            const snack = <Grid container item>
-                                                Copied!
-                                            </Grid>
-
-                                            snackbarContext.openSnackbar && snackbarContext.openSnackbar(snack, 15000)
-                                        }}>
-                                            <Grid item>
-                                                <FileCopy style={{height: "42px"}}/>
-                                                <Typography variant='subtitle1'>Copy</Typography>
-                                            </Grid>
-                                        </Button>
-                                    </Grid>
-                                    <Grid item xs={2}>
-                                        <Button variant='contained' color='primary' fullWidth
-                                                onClick={() => share(pageContext.page?.website ?? "")}>
-                                            <Grid item>
-                                                <img height={42}
-                                                     src={urlFor(pageContext.page?.websiteQrCode ?? "").url() ?? ""}/>
-                                                <Typography variant='subtitle1'>Qr</Typography>
-                                            </Grid>
-                                        </Button>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </ListItem>
-                    <Divider/>
-                    <ListItem>
-                        <Grid container>
-                            <Grid item xs={8} container alignContent='flex-end'>
-                                <Typography variant='h6' gutterBottom>Virtual Meeting</Typography>
-                                <Button variant='outlined' size='small' fullWidth color='primary'
-                                        href={pageContext.page?.bookAppointmentLink}><Grid style={{height: "48px"}}
-                                                                                           container
-                                                                                           justifyContent='center'
-                                                                                           alignContent='center'
-                                                                                           alignItems='center'><Grid
-                                    item><Typography
-
-                                    variant='subtitle1'
-                                    align='center'>{pageContext.page?.bookAppointmentLink}</Typography></Grid></Grid></Button>
-                            </Grid>
-                            <Grid item xs={3} container>
-                                <Grid container item justifyContent='flex-end'>
-
-                                    <Grid item xs={2} container justifyContent='flex-end'>
-                                        <Button variant='contained' color='primary' fullWidth onClick={() => {
-                                            navigator.clipboard.writeText(pageContext.page?.bookAppointmentLink ?? "")
-                                            const snack = <Grid container item>
-                                                Copied!
-                                            </Grid>
-
-                                            snackbarContext.openSnackbar && snackbarContext.openSnackbar(snack, 15000)
-                                        }}
-                                        >
-                                            <Grid item>
-                                                <FileCopy style={{height: "42px"}}/>
-                                                <Typography variant='subtitle1'>Copy</Typography>
-                                            </Grid>
-                                        </Button>
-                                    </Grid>
-                                    <Grid item xs={2}>
-                                        <Button variant='contained' color='primary' fullWidth
-                                                onClick={() => share(pageContext.page?.bookAppointmentLink ?? "")}>
-                                            <Grid item>
-                                                <img height={42}
-                                                     src={urlFor(pageContext.page?.bookAppointmentQrCode ?? "").url() ?? ""}/>
-                                                <Typography variant='subtitle1'>Qr</Typography>
-                                            </Grid>
-                                        </Button>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </ListItem>
-                    <Divider/>
-                    <ListItem>
-                        <Grid item xs={12}>
-                            <BusinessCardSubmitEmail emailFieldText={'Email Address'}
-                                                     emailButtonText={'Submit'}
-                                                     subscribeText={'Get an email with my contact information below'}/>
-                        </Grid>
-                    </ListItem>
-                </List>
+                </List>Y
+                        <SjfContactUs sectionData={pageContext.page?.pageContent}></SjfContactUs>
             </Grid>
             {/*<Divider/>*/}
             {/*{menu?.subMenus?.map((subMenu: any, index: number) => {*/}

@@ -4,6 +4,7 @@ import DigitalResumeTheme, {COLORS} from "../../theme/DigitalResumeTheme";
 import {SanityMenuItem} from "../../common/sanityIo/Types";
 import {makeStyles, Theme} from "@material-ui/core/styles";
 import ModalContext from "../snackbar-context/ModalContext";
+import digitalResumeTheme from "../../theme/DigitalResumeTheme";
 
 const useStyles = makeStyles((theme: Theme) => ({
     hover: {
@@ -34,6 +35,8 @@ const HeaderMenuItemButton: FunctionComponent<HeaderMenuItemButtonProps> = ({men
                         marginTop: (menuItem.isOutlinedButton || menuItem.isContainedButton) ? DigitalResumeTheme.spacing(3) : 0,
                         marginBottom: (menuItem.isOutlinedButton || menuItem.isContainedButton) ? DigitalResumeTheme.spacing(2) : 0,
                         height: menuItem.isOutlinedButton || menuItem.isContainedButton ? "48px" : "100%",
+                        backgroundColor: !menuItem.displayText?.includes("Givelify")?digitalResumeTheme.palette.text.primary:"#ef5322",
+                        color: !menuItem.displayText?.includes("Givelify")?"black":"#F8f8f8"
                     }}
                     className={classes.hover}
                     onClick={ (e:any)=>{
@@ -43,7 +46,7 @@ const HeaderMenuItemButton: FunctionComponent<HeaderMenuItemButtonProps> = ({men
                     }}
                     variant={menuItem.isContainedButton ? 'contained' : (menuItem.isOutlinedButton ? 'outlined' : 'text')}>
         <Typography noWrap
-                    color={menuItem.isOutlinedButton || menuItem.isContainedButton ? 'textPrimary' : 'textPrimary'}
+                    color={menuItem.isOutlinedButton || menuItem.isContainedButton ? 'textPrimary' : 'textSecondary'}
                     variant={menuItem.isOutlinedButton || menuItem.isContainedButton ? "button" : 'body2'}
                     style={{fontSize: "18px", ...textStyle}}>{menuItem.displayText}</Typography>
     </Button>)

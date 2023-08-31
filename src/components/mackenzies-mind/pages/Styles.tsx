@@ -17,7 +17,7 @@ const useCustomStyles = makeStyles({
         borderLeft: `4px solid ${DigitalResumeTheme.palette.primary.main}`,
         borderRight: `4px solid ${DigitalResumeTheme.palette.primary.main}`,
         padding: DigitalResumeTheme.spacing(2,2),
-        backgroundColor:COLORS.TRANSPARENTWHITE
+        backgroundColor:"rgba(0,0,0,.5)"
     },
     endAdornedInput: {
         "& .MuiFilledInput-adornedEnd": {
